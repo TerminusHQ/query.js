@@ -12,7 +12,7 @@
 new function(settings) {
   // Various Settings
   var $separator = settings.separator || '&';
-  var $spaces = settings.spaces === false ? false : true;
+  var $spaces = settings.spaces === true ? true : false;
   var $suffix = settings.suffix === false ? '' : '[]';
   var $prefix = settings.prefix === false ? false : true;
   var $hash = $prefix ? settings.hash === true ? "#" : "?" : "";
