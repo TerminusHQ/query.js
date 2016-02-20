@@ -88,7 +88,9 @@ new function(settings) {
               if (/^[+-]?[0-9]+\.[0-9]*$/.test(val)) // simple float regex
                 val = parseFloat(val);
               else if (/^[+-]?[0-9]+$/.test(val)) // simple int regex
-                val = parseInt(val, 10);
+                // avoid lose integer precision for values beyond +/- 2^^53
+                var tempVal = parseInt(val, 10);
+                val = Math.abs(tempVal) > Math.pow(2, 53) ? val : tempVal;
             }
 
             val = (!val && val !== 0) ? true : val;
