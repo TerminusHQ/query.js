@@ -85,12 +85,13 @@ new function(settings) {
             if (!key) return;
 
             if ($numbers) {
-              if (/^[+-]?[0-9]+\.[0-9]*$/.test(val)) // simple float regex
+              if (/^[+-]?[0-9]+\.[0-9]*$/.test(val)) { // simple float regex
                 val = parseFloat(val);
-              else if (/^[+-]?[0-9]+$/.test(val)) // simple int regex
+              } else if (/^[+-]?[0-9]+$/.test(val))  { // simple int regex
                 // avoid lose integer precision for values beyond +/- 2^^53
                 var tempVal = parseInt(val, 10);
                 val = Math.abs(tempVal) > Math.pow(2, 53) ? val : tempVal;
+              }
             }
 
             val = (!val && val !== 0) ? true : val;
